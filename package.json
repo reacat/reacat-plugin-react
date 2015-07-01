@@ -1,0 +1,32 @@
+{
+  "name": "reacat-plugin-react",
+  "version": "0.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "babel src --watch --out-dir lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reacat/reacat-plugin-react.git"
+  },
+  "keywords": [
+    "reacat",
+    "reacat-plugin",
+    "react"
+  ],
+  "author": "xcatliu <xcatliu@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reacat/reacat-plugin-react/issues"
+  },
+  "homepage": "https://github.com/reacat/reacat-plugin-react",
+  "devDependencies": {
+    "babel": "^5.6.14"
+  },
+  "dependencies": {
+    "object-assign": "^3.0.0",
+    "reacat-plugin-front-matter": "^0.1.1"
+  }
+}
