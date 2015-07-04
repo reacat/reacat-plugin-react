@@ -1,23 +1,31 @@
-var path = require('path');
-var getDefaultPage = require('reacat-plugin-front-matter/lib/getDefaultPage');
-var objectAssign = require('object-assign');
+import path from 'path';
+import objectAssign from 'object-assign';
+import uncache from 'require-uncache';
 
-var extnames = ['.jsx', '.react'];
+const getDefaultPage = require('reacat-plugin-front-matter/lib/getDefaultPage');
+
+const extnames = ['.jsx'];
+
+let registed = false;
 
 function parseReact() {
-  require("babel/register")({
-    only: path.resolve(this.cwd, this.config.source_dir),
-    extensions: extnames
-  });
-  Object.keys(this.sources).forEach((function(filePath) {
-    var source = this.sources[filePath];
-    var extname = path.extname(filePath).toLowerCase();
+  if (!registed) {
+    require('babel/register')({
+      only: path.resolve(this.cwd, this.config.source_dir),
+      extensions: extnames
+    });
+    registed = true;
+  }
+  Object.keys(this.sources).forEach(((filePath) => {
+    const source = this.sources[filePath];
+    const extname = path.extname(filePath).toLowerCase();
     if (extnames.indexOf(extname) === -1) return;
-    var Content = require(filePath);
+    const Content = require(filePath);
+    uncache(filePath);
     source.page = objectAssign(getDefaultPage.call(this, source, ''), Content.frontMatter);
     source.page.Content = Content;
     this.log.verbose('parseReact', source.page.Content);
   }).bind(this));
 }
 
-module.exports = parseReact;
+export default parseReact;

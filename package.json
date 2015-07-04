@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "babel src --watch --out-dir lib",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/eslint ."
   },
   "repository": {
     "type": "git",
@@ -22,10 +22,15 @@
     "url": "https://github.com/reacat/reacat-plugin-react/issues"
   },
   "homepage": "https://github.com/reacat/reacat-plugin-react",
-  "devDependencies": {},
   "dependencies": {
     "babel": "^5.6.14",
     "object-assign": "^3.0.0",
-    "reacat-plugin-front-matter": "^0.1.1"
+    "reacat-plugin-front-matter": "^0.1.1",
+    "require-uncache": "0.0.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^3.1.20",
+    "eslint": "^0.24.0",
+    "eslint-plugin-react": "^2.6.4"
   }
 }
