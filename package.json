@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "babel src --watch --out-dir lib",
-    "test": "./node_modules/.bin/eslint ."
+    "lint": "./node_modules/.bin/eslint --ext .js,.jsx .",
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
